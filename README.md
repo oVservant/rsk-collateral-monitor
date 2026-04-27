@@ -1,6 +1,11 @@
 # ₿ BTC Collateral Monitor
 
+[![GitHub](https://img.shields.io/badge/GitHub-Repo-blue)](https://github.com/oVservant/rsk-collateral-monitor)
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+
 Monitor BTC-backed positions on Rootstock's Money on Chain protocol and receive Telegram alerts when collateral ratios approach liquidation levels.
+
+**🔗 Repository:** https://github.com/oVservant/rsk-collateral-monitor
 
 ## Features
 
