@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  # Polling service (runs every 10 minutes via cron)
+  poller:
+    build: .
+    container_name: rsk-collateral-poller
+    volumes:
+      - ./data:/app/data
+      - ./.env:/app/.env:ro
+    environment:
+      - DATABASE_PATH=/app/data/collateral_monitor.db
+    restart: unless-stopped
+    # Note: Actual cron scheduling is done on host machine
+    # This container is for manual runs or testing
+
+  # Dashboard service (Streamlit web UI)
+  dashboard:
+    build: .
+    container_name: rsk-collateral-dashboard
+    command: streamlit run dashboard/app.py --server.port=8501 --server.address=0.0.0.0
+    volumes:
+      - ./data:/app/data:ro
+      - ./.env:/app/.env:ro
+    ports:
+      - "8501:8501"
+    environment:
+      - DATABASE_PATH=/app/data/collateral_monitor.db
+    restart: unless-stopped
+    depends_on:
+      - poller
+
+# Networks
+networks:
+  default:
+    name: rsk-monitor-network
