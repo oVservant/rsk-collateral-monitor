@@ -1,0 +1,26 @@
+# Development dependencies
+# Install with: pip install -r requirements-dev.txt
+
+# Base dependencies
+-r requirements.txt
+
+# Testing
+pytest>=7.0.0
+pytest-cov>=4.1.0
+
+# Code quality
+black>=24.0.0
+isort>=5.13.0
+flake8>=7.0.0
+mypy>=1.8.0
+
+# Pre-commit hooks
+pre-commit>=3.6.0
+
+# Security
+safety>=3.0.0
+bandit>=1.7.0
+
+# Documentation
+mkdocs>=1.5.0
+mkdocs-material>=9.5.0
